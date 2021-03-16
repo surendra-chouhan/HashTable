@@ -26,6 +26,26 @@ public class HashTable<T extends Comparable, V extends Comparable> {
         }
     }
 
+    public void deleteGivenNode(T data){
+        Node temp = this.linkedList.head;
+        Node previous = null;
+
+        if (temp != this.linkedList.head && temp.data == data){
+            this.linkedList.head = temp.next;
+            return;
+        }
+
+        while(temp != null && temp.data != data){
+            previous = temp;
+            temp = temp.next;
+        }
+
+        if (temp == null){
+            return;
+        }
+        previous.next = temp.next;
+    }
+
     @Override
     public String toString() {
         return "HashTable{" +  linkedList + '}';
